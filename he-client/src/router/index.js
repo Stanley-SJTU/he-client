@@ -29,6 +29,11 @@ const routes = [
     path: "/join",
     name: "join",
     component: () => import("../views/Join.vue")
+  },
+  {
+    path: "/race",
+    name: "race",
+    component: () => import("../views/Race.vue")
   }
 ];
 

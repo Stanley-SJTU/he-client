@@ -1,5 +1,5 @@
 <template>
-  <div :style="backgroundStyle">
+  <div :style="{ backgroundImage: `url('${backgroundSrc}')` }">
     <div class="titleBg">
       <h2 class="title">{{ bannerInfo.title }}</h2>
     </div>
@@ -13,6 +13,14 @@
         </v-card-actions>
       </v-card>
     </div>
+    <v-container fluid>
+      <v-card>
+        <v-img :src="require(this.backgroundSrc)" height="300px">
+          <v-card-title>{{ bannerInfo.title }}</v-card-title>
+        </v-img>
+      </v-card>
+    </v-container>
+    <img :src="backgroundSrc" />
   </div>
 </template>
 
@@ -20,26 +28,20 @@
 export default {
   name: "ImageBlockMain",
   props: ["bannerInfo"],
-  computed: {
-    backgroundStyle() {
-      return {
-        backgroundImage: `url("${this.bannerInfo.backgroundSrc}")`,
-        height: 720 + "px",
-        maxWidth: 100 + "%",
-        backgroundPosition: "fill",
-      };
-    },
+  data() {
+    return {
+      backgroundSrc: this.bannerInfo.backgroundSrc,
+    };
   },
 };
 </script>
 
 <style scoped>
-
 .titleBg {
   background-color: rgba(128, 41, 205, 0.7);
   position: relative;
-  width: 806px;
-  height: 120px;
+  width: 500px;
+  height: 60px;
   left: 147px;
   top: 134px;
 }

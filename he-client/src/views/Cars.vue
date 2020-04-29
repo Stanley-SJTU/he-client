@@ -1,34 +1,33 @@
 <template>
-  <div>
-    <h2>CHOOSE YOUR CAR</h2>
-    <cars-info-detail
-      :cars-info="carsDetailCard"
-      v-if="carsQueryReceived"
-    ></cars-info-detail>
+  <span>
     <v-container>
-      <v-autocomplete
-        v-model="carsSelected"
-        :items="carsSearch"
-        label="CHOOSE YOUR CAR"
-        item-value="id"
-        item-text="Search Menu Model Name"
-        solo
-      ></v-autocomplete>
-
-      <p>Selected: {{this.carsSelected}}</p>
-
+      <p class="display-3">CHOOSE YOUR CAR</p>
+      <cars-info-detail
+        :cars-info="carsDetailCard"
+        v-if="carsQueryReceived"
+      ></cars-info-detail>
+      <v-container>
+        <v-autocomplete
+          v-model="carsSelected"
+          :items="carsSearch"
+          label="CHOOSE YOUR CAR"
+          item-value="id"
+          item-text="Search Menu Model Name"
+          solo
+        ></v-autocomplete>
+      </v-container>
+      <v-card class="mx-auto">
+        <v-row align="center">
+          <v-col class="text-center" cols="12" sm="4">
+            <v-btn text @click="addFavouriteCarsUser">ADD TO FAVOURITES</v-btn>
+          </v-col>
+          <v-col class="text-center" cols="12" sm="4">
+            <v-btn text>COMPARE CARS</v-btn>
+          </v-col>
+        </v-row>
+      </v-card>
     </v-container>
-    <v-card class="mx-auto">
-      <v-row align="center">
-        <v-col class="text-center" cols="12" sm="4">
-          <v-btn text @click="addFavouriteCarsUser">ADD TO FAVOURITES</v-btn>
-        </v-col>
-        <v-col class="text-center" cols="12" sm="4">
-          <v-btn text>COMPARE CARS</v-btn>
-        </v-col>
-      </v-row>
-    </v-card>
-  </div>
+  </span>
 </template>
 
 <script>
@@ -58,7 +57,7 @@ export default {
     carsSelected: function(newCarId) {
       console.log("The new id is: " + newCarId);
       this.getSingleCar(newCarId);
-    }
+    },
   },
 
   methods: {

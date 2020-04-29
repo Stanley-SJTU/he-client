@@ -2,29 +2,37 @@
   <span>
     <div class="welcomeIsland">
       <div class="welcome">
-        <h2>WELCOME TO</h2>
+        <h2 class="bannerText">WELCOME TO</h2>
       </div>
-      <div class="island">
-        <h2>THE HORIZON ISLAND</h2>
+      <div class="toIsland">
+        <h2 class="bannerText">THE HORIZON ISLAND</h2>
       </div>
     </div>
 
-    <image-block-main
-      v-for="banner in banners"
-      v-bind:key="banner.id"
-      v-bind:bannerInfo="banner"
-    ></image-block-main>
+    <div class="island">
+      <h2>{{ banners[0].title }}</h2>
+    </div>
+
+    <div class="cars">
+      <h2>{{ banners[1].title }}</h2>
+    </div>
+
+    <div class="race">
+      <h2>{{ banners[2].title }}</h2>
+    </div>
   </span>
 </template>
 
 <script>
-import ImageBlockMain from "@/components/ImageBlockMain";
+//import ImageBlockMain from "@/components/ImageBlockMain";
 
 export default {
   name: "home",
+  /*
   components: {
     ImageBlockMain,
   },
+  */
   data() {
     return {
       banners: [
@@ -57,7 +65,17 @@ export default {
 
 <style scoped>
 .welcomeIsland {
-  background-image: url("../assets/images/horizonMap.jpg");
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    url("../assets/images/horizonMap.jpg"),
+    linear-gradient(
+      180deg,
+      rgba(115, 75, 109, 0.7) 19.81%,
+      rgba(66, 39, 90, 0.7) 88.33%
+    );
   width: 100%;
   height: 540px;
 }
@@ -72,7 +90,22 @@ export default {
   top: 119px;
 }
 
-.island {
+.bannerText {
+  font-family: Graph Paris;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 64px;
+  width: 474px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+.toIsland {
   position: absolute;
   width: 474px;
   height: 120px;
@@ -80,5 +113,63 @@ export default {
   top: 239px;
 
   background: #d9269c;
+}
+
+.island {
+  background: linear-gradient(
+      269.9deg,
+      rgba(255, 255, 255, 0) 40.18%,
+      rgba(255, 255, 255, 0.7) 99.96%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0) 56.15%
+    ),
+    url("../assets/images/islandBg.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 540px;
+}
+
+.cars {
+  background: linear-gradient(
+      269.9deg,
+      rgba(255, 255, 255, 0) 40.18%,
+      rgba(255, 255, 255, 0.7) 99.96%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0) 56.15%
+    ),
+    url("../assets/images/carsBg.png");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 540px;
+}
+
+.race {
+  background: linear-gradient(
+      269.9deg,
+      rgba(255, 255, 255, 0) 40.18%,
+      rgba(255, 255, 255, 0.7) 99.96%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0) 56.15%
+    ),
+    url("../assets/images/raceBg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 540px;
 }
 </style>

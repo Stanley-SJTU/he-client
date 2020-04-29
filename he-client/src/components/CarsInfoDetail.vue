@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-card class="mx-auto" max-width="400">
       <v-img
         height="200px"
@@ -33,7 +33,7 @@
         </v-tab-item>
       </v-tabs-items>
     </v-card>
-  </div>
+  </v-container>
 </template>
 
 <script>

@@ -1,26 +1,28 @@
 <template>
   <span>
-    <div>
-      <div class="islandInfo">
-        <h2>SIGHTSEEING IN HORIZON ISLAND</h2>
+    <v-container>
+      <v-container class="islandInfo">
+        <p class="display-3">SIGHTSEEING IN HORIZON ISLAND</p>
         <p>sample text</p>
-      </div>
-      <div>
+      </v-container>
+      <v-container>
         <v-select
           v-model="locationSelected"
-          :items="islandInfo.title"
+          :items="islandInfo"
           label="Choose a location"
+          item-value="title"
+          item-text="title"
           solo
         ></v-select>
-      </div>
-      <div>
-        <v-card class="mx-auto" max-width="1600">
+      </v-container>
+      <v-container>
+        <v-card class="mx-auto" max-width="1200">
           <v-img
             class="white--text align-end"
             height="640px"
-            v-bind:src="getIslandImage()"
+            src="../assets/images/bamburghCastle.jpeg"
           >
-          <v-card-title>{{ locationSelected }}</v-card-title>
+            <v-card-title>{{ locationSelected }}</v-card-title>
           </v-img>
           <v-card-text class="text--primary">
             <div>{{ getIslandText() }}</div>
@@ -31,13 +33,12 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </div>
-    </div>
+      </v-container>
+    </v-container>
   </span>
 </template>
 
 <script>
-
 export default {
   name: "Island",
   data() {
@@ -109,10 +110,12 @@ export default {
   },
   methods: {
     getIslandImage: function() {
-      return this.islandInfo.find(i => i.title === this.locationSelected).imgSrc;
+      return this.islandInfo.find((i) => i.title === this.locationSelected)
+        .imgSrc;
     },
     getIslandText: function() {
-      return this.islandInfo.find(i => i.title === this.locationSelected).text;
+      return this.islandInfo.find((i) => i.title === this.locationSelected)
+        .text;
     },
   },
 };
